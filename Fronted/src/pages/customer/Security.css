@@ -1,0 +1,171 @@
+/* =========================
+   Account Security
+========================= */
+
+.security-page {
+  min-height: 80vh;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.security-container {
+  width: 100%;
+  max-width: 650px;
+}
+
+.security-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.security-header p {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.security-header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.security-header span {
+  color: #666;
+}
+
+.security-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.security-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.security-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f1f5ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+}
+
+.security-title h2 {
+  margin: 0 0 5px;
+}
+
+.security-title p {
+  margin: 0;
+  color: #666;
+}
+
+.security-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.security-card label {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.security-card input {
+  padding: 13px;
+  margin-bottom: 20px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  font-size: 16px;
+  outline: none;
+}
+
+.security-card input:focus {
+  border-color: #2563eb;
+}
+
+.security-card button {
+  padding: 13px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.security-card button:hover {
+  background: #1d4ed8;
+}
+
+.security-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.security-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  margin-top: 20px;
+  padding: 20px;
+
+  border-radius: 12px;
+  background: #f5f8ff;
+}
+
+.security-info > span {
+  font-size: 28px;
+}
+
+.security-info h3 {
+  margin: 0 0 5px;
+}
+
+.security-info p {
+  margin: 0;
+  color: #666;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .security-page {
+    padding: 30px 15px;
+  }
+
+  .security-header h1 {
+    font-size: 28px;
+  }
+
+  .security-card {
+    padding: 20px;
+  }
+
+  .security-title {
+    align-items: flex-start;
+  }
+
+}

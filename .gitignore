@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+Fronted/node_modules/
+Backend/node_modules/
+
+# Environment Variables / Secrets
+.env
+Backend/.env
+Fronted/.env
+
+# Production Builds
+Fronted/dist/
+Fronted/dist-ssr/
+
+# Logs and OS files
+*.log
+.DS_Store
+.vscode/
+
