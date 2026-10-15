@@ -13,6 +13,7 @@ import Transfer from "./pages/customer/Transfer";
 import Account from "./pages/customer/Account";
 import Transactions from "./pages/customer/Transaction";
 import Security from "./pages/customer/Security";
+import ResumeAnalyzer from "./ResumeAnalyzer.jsx";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
 
         <Route path="/contact" element={<Contact />} />
 
+        <Route path="/resume-analyzer" element={<ResumeAnalyzer />} />
+
         <Route path="/login" element={<Login />} />
 
         <Route path="/register" element={<Register />} />
@@ -45,7 +48,8 @@ function App() {
         <Route path="/transactions" element={<Transactions />} />
 
         <Route path="/security" element={<Security />} />
-
+        
+        
       </Routes>
 
     </BrowserRouter>

@@ -1,0 +1,132 @@
+
+.resume-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f3f6fb;
+  box-sizing: border-box;
+}
+
+.resume-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.resume-card h1 {
+  margin-top: 0;
+  color: #163b6d;
+}
+
+.resume-card label {
+  display: block;
+  margin: 24px 0 10px;
+  font-weight: 600;
+}
+
+.resume-card textarea {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font: inherit;
+  resize: vertical;
+}
+
+.resume-card button {
+  margin-top: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #176b53;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.resume-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.resume-error {
+  color: #b91c1c;
+}
+
+.resume-result {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #eef7f2;
+  overflow-wrap: anywhere;
+}
+
+
+/* Improved AI analysis report */
+.resume-result {
+  margin-top: 28px;
+  padding: 24px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #dbe5ef;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.resume-result h2 {
+  margin-top: 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+  color: #163b6d;
+}
+
+.resume-result-content h1,
+.resume-result-content h2,
+.resume-result-content h3 {
+  margin-top: 24px;
+  margin-bottom: 10px;
+  color: #163b6d;
+  line-height: 1.4;
+}
+
+.resume-result-content h1 {
+  font-size: 24px;
+}
+
+.resume-result-content h2 {
+  font-size: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.resume-result-content h3 {
+  font-size: 17px;
+}
+
+.resume-result-content p {
+  margin: 10px 0;
+}
+
+.resume-result-content ul,
+.resume-result-content ol {
+  padding-left: 25px;
+  margin: 10px 0 18px;
+}
+
+.resume-result-content li {
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+.resume-result-content strong {
+  color: #174c3c;
+}
+
+.resume-result-content hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 20px 0;
+}
