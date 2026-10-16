@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// craete schema which is rules for describing user document
 const userSchema = new mongoose.Schema(
   {
     fullName: {
@@ -28,6 +29,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// Create a Mongoose User model using userSchema. way for our application to work with User documents
 const User = mongoose.model("User", userSchema);
 
 export default User;

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// It defines what details to store every time money is deposited, withdrawn, or transferred.
 const transactionSchema = new mongoose.Schema(
   {
     type: {
@@ -25,6 +26,7 @@ const transactionSchema = new mongoose.Schema(
   }
 );
 
+// This schema holds the main bank account details of a user along with their full passbook history.
 const accountSchema = new mongoose.Schema(
   {
     userId: {
@@ -48,10 +50,13 @@ const accountSchema = new mongoose.Schema(
     transactions: [transactionSchema]
   },
   {
+    // Automatically creates and manages 'createdAt' and 'updatedAt' fields
     timestamps: true
   }
 );
 
+// Model Creation: Compiles the schema into a live 'Account' model so we can read and write data to MongoDB.
 const Account = mongoose.model("Account", accountSchema);
 
+// Allows other controller files to import this Account model and use it.
 export default Account;

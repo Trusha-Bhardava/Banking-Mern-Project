@@ -4,15 +4,20 @@ import { GoogleGenAI } from "@google/genai";
 
 const router = express.Router();
 
+//  Fetch the API key from your environment variables (.env file)
 const apiKey = process.env.GEMINI_API_KEY;
+
+//  Initialize the Gemini client only if the API key exists, otherwise keep it null
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 // POST /api/resume/analyze
+// Receives the text from the frontend, sends it to Gemini AI, and returns the feedback.
 router.post("/analyze", async (req, res) => {
   try {
     const { resumeText } = req.body;
 
     // Check whether resume text was provided
+    // Stop immediately if the user sends empty text or spaces
     if (!resumeText || !resumeText.trim()) {
       return res.status(400).json({
         message: "Please enter your resume text."
@@ -20,6 +25,7 @@ router.post("/analyze", async (req, res) => {
     }
 
     // Check whether the Gemini API key exists
+    // Stop if the developer forgot to set the API key in the .env file
     if (!ai) {
       return res.status(500).json({
         message: "Gemini API key is missing."
@@ -58,6 +64,7 @@ router.post("/analyze", async (req, res) => {
 
   const errorMessage = error.message || "";
 
+  // If Google's AI servers are down or overloaded (503), tell the user gently
   if (
     errorMessage.includes("503") ||
     errorMessage.includes("UNAVAILABLE")

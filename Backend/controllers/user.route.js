@@ -1,9 +1,6 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
-
-
-
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
@@ -20,7 +17,7 @@ router.post("/register", async (req, res) => {
 
     if (existingUser) {
       return res.status(400).json({
-        message: "Email already registered"
+        message: "Email already registered" 
       });
     }
 

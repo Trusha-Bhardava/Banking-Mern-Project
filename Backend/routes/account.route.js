@@ -1,3 +1,4 @@
+// connects HTTP requests to those controller functions.
 import express from "express";
 
 import {

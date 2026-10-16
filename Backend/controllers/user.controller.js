@@ -2,12 +2,17 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+// async because we perform database and bcrypt operations that return Promises
 export const registerUser = async (req, res) => {
   try {
+    // get registration data in req.body in (object destructing)
     const { fullName, email, phone, password } = req.body;
 
+    // It takes the original password and creates a secure hash.
+    // 10 controls the computational cost used by bcrypt when generating the password hash
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // This connects directly to the model
     const user = new User({
       fullName,
       email,
@@ -15,6 +20,7 @@ export const registerUser = async (req, res) => {
       password: hashedPassword
     });
 
+    // This is where the document actually gets saved to MongoDB.
     await user.save();
 
     res.status(201).json({
@@ -101,7 +107,8 @@ export const changePassword = async (req, res) => {
       });
     }
 
-    // Find user
+   //  Fetches the user from the database using their ID.
+   // This is required to verify the user exists, check their old password, and update it.
     const user = await User.findById(userId);
 
     if (!user) {

@@ -4,8 +4,10 @@ import User from "../models/user.model.js";
 // Create account
 export const createAccount = async (req, res) => {
   try {
+    // Extracts the 'userId' directly from the incoming request body
     const { userId } = req.body;
 
+    // Check whether the account already exists
     const existingAccount = await Account.findOne({ userId });
 
     if (existingAccount) {
@@ -14,9 +16,11 @@ export const createAccount = async (req, res) => {
       });
     }
 
+    // Generates a random, unique 10-character bank account number.
     const accountNumber =
       "SB" + Math.floor(10000000 + Math.random() * 90000000);
-
+      
+    // it creates a Mongoose document in memory
     const account = new Account({
       userId,
       accountNumber,
@@ -44,6 +48,7 @@ export const createAccount = async (req, res) => {
 // Get account
 export const getAccount = async (req, res) => {
   try {
+    // Extracts the 'userId' directly from the URL path.
     const { userId } = req.params;
 
     const account = await Account.findOne({ userId });
@@ -99,8 +104,10 @@ export const depositMoney = async (req, res) => {
       });
     }
 
+    // add balance in sccount
     account.balance += Number(amount);
-
+    
+    // Uses '.unshift()' to add the new deposit receipt at the very top of the transaction history.
     account.transactions.unshift({
       type: "deposit",
       amount: Number(amount),
@@ -144,14 +151,17 @@ export const withdrawMoney = async (req, res) => {
       });
     }
 
+    // check first balance is suffiecient in acoount or not
     if (account.balance < Number(amount)) {
       return res.status(400).json({
         message: "Insufficient balance"
       });
     }
-
+    
+    //  Converts 'amount' to a number to safely subtract it from the balance.
     account.balance -= Number(amount);
-
+    
+    // Uses '.unshift()' to push this new withdrawal entry to the very top of the history.
     account.transactions.unshift({
       type: "withdraw",
       amount: Number(amount),
