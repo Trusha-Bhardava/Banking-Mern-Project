@@ -7,8 +7,8 @@ function Security() {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  // 'loading' tracks active network calls to the change-password API.
   const [loading, setLoading] = useState(false);
-
 
   const handleSubmit = async (e) => {
 
@@ -38,18 +38,14 @@ function Security() {
       const token = localStorage.getItem("token");
       const userId = localStorage.getItem("userId");
 
-
-      if (!token || !userId) {
-
+// Terminate operations if session tokens are absent.
+      if (!token || !userId)
+     {
         alert("Please login first");
-
         return;
-
       }
 
-
       setLoading(true);
-
 
       const response = await fetch(
         "http://localhost:8000/api/users/change-password",
@@ -78,16 +74,14 @@ function Security() {
         data
       );
 
-
-      if (!response.ok) {
-
+// Check if the server validated the inputs successfully.
+      if (!response.ok) 
+        {
         alert(
           data.message ||
           "Unable to change password"
         );
-
         return;
-
       }
 
 

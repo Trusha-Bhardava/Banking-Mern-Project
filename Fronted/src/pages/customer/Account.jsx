@@ -1,17 +1,20 @@
+// Import useEffect for side effects (fetching data) and useState for managing component state.
 import { useEffect, useState } from "react";
 import "./Account.css";
 
 function Account() {
 
   const [account, setAccount] = useState(null);
+  // loading tracks whether the API request is still in progress.It starts as 'true' to show a loading screen immediately.
   const [loading, setLoading] = useState(true);
 
+  // Runs automatically when the component loads on the screen.
   useEffect(() => {
-
+      
     const fetchAccountDetails = async () => {
 
       try {
-
+        //  Retrieve the saved JWT token from localStorage to verify who the user is.
         const token = localStorage.getItem("token");
 
         if (!token) {
@@ -25,15 +28,18 @@ function Account() {
           {
             method: "GET",
             headers: {
+              // Attach the JWT bearer token in the headers for server authentication.
               Authorization: `Bearer ${token}`
             }
           }
         );
-
+      
+         // Parse the response from the server back into a usable JavaScript object.
         const data = await response.json();
 
         console.log("ACCOUNT DETAILS:", data);
-
+ 
+         // If the request was approved by the server, update the 'account' state.
         if (response.ok) {
 
           setAccount(data.account);
@@ -50,12 +56,12 @@ function Account() {
 
         alert("Unable to connect to server");
 
-      } finally {
-
+      } 
+       // This block runs no matter what (success or failure) to turn off the loading layout.
+      finally 
+      {
         setLoading(false);
-
       }
-
     };
 
     fetchAccountDetails();
@@ -71,7 +77,7 @@ function Account() {
     );
   }
 
-
+// If loading finished but no 'account' object was saved, show an error panel.
   if (!account) {
     return (
       <div className="account-page">
