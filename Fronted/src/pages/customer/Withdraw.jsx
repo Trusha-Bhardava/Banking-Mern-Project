@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./Withdraw.css";
-function Withdraw() {
 
+function Withdraw() 
+{
+   // State variables to control input values and track operation feedback messages
   const [amount, setAmount] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -9,6 +11,7 @@ function Withdraw() {
   const handleWithdraw = async (e) => {
     e.preventDefault();
 
+    // Reset feedback text boxes at the start of a new transaction attempt
     setMessage("");
     setError("");
 

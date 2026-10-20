@@ -22,7 +22,7 @@ function Services() {
 
   <div className="services-intro-image">
     <img
-      src="/images/service.png"
+      src="/images/service.png-"
       alt="SecureBank digital banking services"
     />
   </div>

@@ -25,8 +25,8 @@ function Transfer() {
           method: "POST",
 
           headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
+            "Content-Type": "application/json", // Inform server we are sending JSON data
+            Authorization: `Bearer ${token}`  // Bearer token validation for route security
           },
 
           body: JSON.stringify({

@@ -3,7 +3,9 @@ import "./Transaction.css";
 
 function Transactions() {
 
+   // State to hold the list of transactions fetched from the backend
   const [transactions, setTransactions] = useState([]);
+   // State to track whether the API request is still loading
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,11 +28,13 @@ function Transactions() {
           {
             method: "GET",
             headers: {
+              // Attach the JWT bearer token in the headers for server authentication.
               Authorization: `Bearer ${token}`
             }
           }
         );
 
+           // Parse the response from the server back into a usable JavaScript object.
         const data = await response.json();
 
         console.log("TRANSACTIONS RESPONSE:", data);
@@ -53,10 +57,10 @@ function Transactions() {
 
         alert("Unable to connect to server");
 
-      } finally {
-
+      } 
+      finally 
+      {
         setLoading(false);
-
       }
 
     };
@@ -86,26 +90,26 @@ function Transactions() {
 
 
         {loading ? (
-
+         // Show this while data is being fetched
           <div className="transactions-message">
             Loading transactions...
           </div>
 
         ) : transactions.length === 0 ? (
-
+            //Show this if loading finished but the transaction array is empty
           <div className="transactions-message">
             No transactions found.
           </div>
 
         ) : (
-
+        // Show this when transactions are available
           <div className="transactions-list">
-
+         // Map over the transactions array to render each item dynamically 
             {transactions.map((transaction, index) => (
 
               <div
                 className="transaction-item"
-                key={transaction._id || index}
+                key={transaction._id || index} // Unique key for React reconciliation
               >
 
                 <div className="transaction-icon">
