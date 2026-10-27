@@ -68,7 +68,7 @@ This project was developed as a learning and portfolio project to demonstrate fu
 
 ## Project Structure
 
-
+```text
 Banking-Mern-Project/
 ├── Backend/
 │   ├── config/
@@ -93,9 +93,9 @@ Banking-Mern-Project/
 │   └── .env.production
 │
 └── README.md
+```
 
-
-*Note: The structure above is a guide based on the current project setup. Your actual folders and files may differ.
+*Note: The structure above is a guide based on the current project setup. Your actual folders and files may differ.*
 
 ## Prerequisites
 
@@ -111,54 +111,67 @@ Install the following before running the project:
 
 ### 1. Clone the repository
 
-
+```bash
 git clone https://github.com/Trusha-Bhardava/Banking-Mern-Project.git
 cd Banking-Mern-Project
-
+```
 
 ### 2. Set up the backend
 
-
+```bash
 cd Backend
 npm install
+```
 
 Create a `.env` file inside the `Backend` folder:
 
+```env
 PORT=8000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secure_jwt_secret
 GEMINI_API_KEY=your_gemini_api_key
-
+```
 
 Replace the example values with your own credentials. Do not commit your `.env` file to GitHub.
 
 Start the backend:
 
-
+```bash
 npm start
-
+```
 
 If the project does not have a `start` script in `Backend/package.json`, run:
 
+```bash
 node server.js
+```
 
 The backend should be available at:
-http://localhost:8000
 
+```text
+http://localhost:8000
+```
 
 ### 3. Set up the frontend
 
 Open another terminal from the project root:
 
+```bash
 cd Fronted
 npm install
+```
 
 Start the development server:
 
+```bash
 npm run dev
+```
 
 Open the local URL displayed by Vite, usually:
+
+```text
 http://localhost:5173
+```
 
 Make sure frontend API requests point to the backend URL and that the backend allows requests from the frontend origin.
 
@@ -183,4 +196,24 @@ The exact account endpoints and required request fields depend on the routes imp
 - Passwords should be hashed before being stored.
 - Protected endpoints should verify JWT tokens.
 - Validate user input on both the frontend and backend.
-- Keep API keys, database
+- Keep API keys, database credentials, and JWT secrets private.
+- Never commit `.env` files or expose secrets in frontend code.
+- This project is for educational and demonstration purposes, not for processing real financial transactions.
+
+## Future Improvements
+
+- Improve transaction history and filtering.
+- Add stronger validation and error handling.
+- Improve mobile responsiveness and accessibility.
+- Deploy the frontend and backend using suitable hosting services.
+- Add automated backend and API tests.
+
+## Author
+
+**Trusha Bhardava**
+
+GitHub: [Trusha-Bhardava](https://github.com/Trusha-Bhardava)
+
+## Disclaimer
+
+SecureBank is an educational full-stack development project. It is not an actual bank and should not be used to store real customer financial information or process real-money transactions.
