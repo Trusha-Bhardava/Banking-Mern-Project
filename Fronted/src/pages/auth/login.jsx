@@ -44,6 +44,34 @@ function Login() {
   // Save JWT token
   localStorage.setItem("token", data.token);
 
+  // Create a bank account for the logged-in user
+const accountResponse = await fetch(
+  "http://localhost:8000/api/accounts/create",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${data.token}`
+    },
+    body: JSON.stringify({
+      userId: data.user.id
+    })
+  }
+);
+
+const accountData = await accountResponse.json();
+
+console.log("ACCOUNT CREATION RESPONSE:", accountData);
+
+if (!accountResponse.ok) {
+  console.error("Account creation failed:", accountData.message);
+  alert(
+    accountData.message ||
+    "Login successful, but bank account creation failed."
+  );
+  return;
+}
+
   // Save user ID
   localStorage.setItem("userId", data.user.id);
 

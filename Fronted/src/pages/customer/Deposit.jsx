@@ -94,14 +94,14 @@ function Deposit() {
             onChange={(e) => setAmount(e.target.value)}
           />
 
-          //  Interactive submit button that disables itself dynamically while loading to stop multiple calls
+          
           <button type="submit" disabled={loading}>
             {loading ? "Processing..." : "Deposit Money"}
           </button>
 
         </form>
 
-        // UI paragraph shows up only if 'message' is a non-empty string
+       
         {message && (
           <p className="deposit-message">{message}</p>
         )}

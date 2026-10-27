@@ -47,6 +47,8 @@ body {
   justify-content: space-between;
 
   gap: 80px;
+
+  
 }
 
 
@@ -1042,9 +1044,11 @@ body {
 
   gap: 50px;
 
-  padding: 70px 10%;
+  padding: 8%;
 
   background: #eef6ff;
+
+  padding-top: 8px;
 }
 
 .hero-content {
@@ -1062,7 +1066,6 @@ body {
   flex: 1;
 
   display: flex;
-
   justify-content: center;
   align-items: center;
 }
@@ -1179,7 +1182,7 @@ body {
 
   gap: 25px;
 
-  color: #667085;
+  color: black;
 
   font-size: 14px;
 }
@@ -1364,6 +1367,7 @@ body {
     margin-left: auto;
 
     margin-right: auto;
+
   }
 
   .hero-buttons {
@@ -2014,7 +2018,7 @@ body {
   color: #123c69;
   font-size: 24px;
   font-weight: 700;
-  white-space: nowrap;
+  
 }
 
 .navbar-links {

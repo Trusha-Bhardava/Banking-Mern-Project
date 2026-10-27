@@ -68,21 +68,17 @@ function Home() {
 
     <div className="home-page">
 
-
       {/* ================= HERO SECTION ================= */}
 
       <section className="modern-hero">
-
 
         {/* LEFT SIDE */}
 
         <div className="hero-content">
 
-
           <p className="hero-small-title">
             SMART DIGITAL BANKING
           </p>
-
 
           <h1>
 
@@ -102,23 +98,9 @@ function Home() {
 
           </p>
 
-
           {/* BUTTONS */}
 
           <div className="hero-buttons">
-
-
-            {token && (
-
-              <Link
-                to="/deposit"
-                className="home-button"
-              >
-                Deposit Money
-              </Link>
-
-            )}
-
 
             <Link
               to="/services"
@@ -127,9 +109,7 @@ function Home() {
               Explore Services
             </Link>
 
-
           </div>
-
 
           {/* BENEFITS */}
 

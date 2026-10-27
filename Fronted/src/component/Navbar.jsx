@@ -51,7 +51,7 @@ function Navbar() {
 
         {/* Buttons */}
         <div className="navbar-buttons">
-//  If 'user' is null (Not logged in), show Login and Open Account buttons.
+
           {!user ? (
             <>
               <Link
@@ -71,7 +71,7 @@ function Navbar() {
           ) : (
             // If 'user' exists (Logged in)
             <>
-            // Display the logged-in user's name dynamically
+           
               <span className="welcome-user">
                 Hi, {user.fullName}
               </span>
