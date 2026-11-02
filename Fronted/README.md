@@ -1,16 +1,125 @@
-# React + Vite
+# SecureBank – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## About
 
-Currently, two official plugins are available:
+SecureBank is a MERN Stack Banking Application frontend built using React and Vite. It provides a user-friendly interface for customers to access banking services such as registration, login, deposits, withdrawals, money transfers, and account management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The frontend communicates with the backend through REST APIs.
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React.js
+- JavaScript
+- HTML5
+- CSS3
+- Vite
+- React Router DOM
+- Fetch API
 
-## Expanding the Oxlint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- User Registration
+- User Login and Logout
+- Home Page
+- Services Page
+- About Page
+- Contact Page
+- Deposit Money
+- Withdraw Money
+- Money Transfer
+- Account Details
+- Transaction History
+- Security and Password Management
+- AI Resume Analyzer
+- Form Validation
+- Password Visibility Toggle
+
+## Project Structure
+
+```text
+Fronted/
+│
+├── public/
+│   └── images/
+│
+├── src/
+│   ├── component/
+│   │   ├── Navbar.jsx
+│   │   └── Footer.jsx
+│   │
+│   ├── pages/
+│   │   ├── auth/
+│   │   │   └── login.jsx
+│   │   │
+│   │   ├── Home.jsx
+│   │   ├── Register.jsx
+│   │   ├── Services.jsx
+│   │   ├── About.jsx
+│   │   ├── Contact.jsx
+│   │   ├── Deposit.jsx
+│   │   ├── Withdraw.jsx
+│   │   ├── Transfer.jsx
+│   │   ├── Account.jsx
+│   │   ├── Transaction.jsx
+│   │   └── Security.jsx
+│   │
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+│
+├── index.html
+├── package.json
+└── README.md
+```
+
+*Note: The structure above describes the main frontend files. Additional files may exist in the project.*
+
+## Installation and Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Trusha-Bhardava/Banking-Mern-Project.git
+```
+
+### 2. Navigate to Frontend Folder
+
+```bash
+cd Banking-Mern-Project/Fronted
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the Frontend
+
+```bash
+npm run dev
+```
+
+Vite will display a local URL, usually:
+
+```text
+http://localhost:5173
+```
+
+Open this URL in your browser.
+
+## Backend Connection
+
+The frontend communicates with the backend running locally at:
+
+```text
+http://localhost:8000
+```
+
+The application uses API requests for registration, login, banking operations, contact messages, and resume analysis.
+
+For deployment, configure the frontend API base URL using the Vite environment variable:
+
+```env
+VITE_API_URL=your_backend
