@@ -5,35 +5,43 @@ import jwt from "jsonwebtoken";
 // async because we perform database and bcrypt operations that return Promises
 export const registerUser = async (req, res) => {
   try {
-    // get registration data in req.body in (object destructing)
-    const { fullName, email, phone, password } = req.body;
+    let { fullName, email, phone, password } = req.body;
 
-    // It takes the original password and creates a secure hash.
-    // 10 controls the computational cost used by bcrypt when generating the password hash
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const cleanedPhone = phone ? phone.replace(/\D/g, '') : '';
 
-    // This connects directly to the model
-    const user = new User({
+    const newUser = new User({
       fullName,
       email,
-      phone,
-      password: hashedPassword
+      phone: cleanedPhone,
+      password
     });
 
-    // This is where the document actually gets saved to MongoDB.
-    await user.save();
-
-    res.status(201).json({
-      message: "User registered successfully"
-    });
+    await newUser.save();
+    return res.status(201).json({ message: "User registered successfully!" });
 
   } catch (error) {
-    res.status(500).json({
-      message: "Registration failed",
-      error: error.message
-    });
+    // 1. Catch MongoDB unique constraint error (e.g., Email already registered)
+    if (error.code === 11000) {
+      return res.status(400).json({ 
+        errors: { email: "Email address is already registered" } 
+      });
+    }
+
+    // 2. Catch Mongoose Validation Errors and break them down by field
+    if (error.name === "ValidationError") {
+      let fieldErrors = {};
+      
+      Object.keys(error.errors).forEach((key) => {
+        fieldErrors[key] = error.errors[key].message; // Grab your custom schema string
+      });
+
+      return res.status(400).json({ errors: fieldErrors });
+    }
+
+    return res.status(500).json({ message: "Something went wrong on the server" });
   }
 };
+
 
 export const loginUser = async (req, res) => {
   try {

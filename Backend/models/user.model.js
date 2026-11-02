@@ -5,23 +5,28 @@ const userSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
-      required: true
+      required: [true,'Full name is required'],
+      minlength: [10, 'Full name must be at least 10 characters long'],
+      maxlength: [50, 'Full name cannot exceed 50 characters'],
     },
 
     email: {
       type: String,
-      required: true,
-      unique: true
+      required: [true, 'Email address is required'], 
+      unique: true,
+      lowercase: true,
     },
 
     phone: {
       type: String,
-      required: true
+      required: [true, 'Phone number is required'],
+      match: [/^\d{10}$/, 'Phone number must be exactly 10 digits'],
     },
 
     password: {
       type: String,
-      required: true
+      required: [true, 'Password is required'],
+      minlength: [8, 'Password must be at least 8 characters long'],
     }
   },
   {
