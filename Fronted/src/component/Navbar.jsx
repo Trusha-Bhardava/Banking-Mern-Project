@@ -1,5 +1,5 @@
 // Import the useState hook from React to manage the local state of the user.
-import { useState } from "react";
+import { useState,  } from "react";
 // Import Link for page navigation and useNavigate to programmatically redirect users.
 import { Link, useNavigate } from "react-router-dom";
 
@@ -16,19 +16,17 @@ function Navbar() {
   // Initialize the navigate function to handle page redirects
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    //  Clear session and user data from the browser's localStorage.
+const handleLogout = () => {
   localStorage.removeItem("user");
   localStorage.removeItem("token");
   localStorage.removeItem("userId");
 
-  //  Clear the React state so the UI immediately updates 
   setUser(null);
 
   alert("Logged out successfully!");
 
-  //  Redirect the user back to the home page ("/") after they log out.
-  navigate("/");
+  // Reload the home page and clear old component state
+  window.location.href = "/";
 };
 
   return (
