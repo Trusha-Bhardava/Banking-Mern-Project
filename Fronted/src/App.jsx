@@ -5,14 +5,14 @@ import Home from "./pages/Home";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Login from "./pages/auth/login";
-import Register from "./pages/Register";
-import Deposit from "./pages/customer/Deposit";
-import Withdraw from "./pages/customer/Withdraw";
-import Transfer from "./pages/customer/Transfer";
-import Account from "./pages/customer/Account";
-import Transactions from "./pages/customer/Transaction";
-import Security from "./pages/customer/Security";
+import Login from "./pages/Authorizing/login";
+import Register from "./pages/Authorizing/Register";
+import Deposit from "./pages/Services_Nav/Deposit";
+import Withdraw from "./pages/Services_Nav/Withdraw";
+import Transfer from "./pages/Services_Nav/Transfer";
+import Account from "./pages/Services_Nav/Account";
+import Transactions from "./pages/Services_Nav/Transaction";
+import Security from "./pages/Services_Nav/Security";
 import ResumeAnalyzer from "./ResumeAnalyzer.jsx";
 
 function App() {

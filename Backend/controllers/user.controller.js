@@ -3,44 +3,53 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 // async because we perform database and bcrypt operations that return Promises
-export const registerUser = async (req, res) => {
-  try {
-    let { fullName, email, phone, password } = req.body;
+  export const registerUser = async (req, res) => {
+    try {
+      let { fullName, email, phone, password } = req.body;
 
-    const cleanedPhone = phone ? phone.replace(/\D/g, '') : '';
+      const cleanedPhone = phone ? phone.replace(/\D/g, '') : '';
 
-    const newUser = new User({
-      fullName,
-      email,
-      phone: cleanedPhone,
-      password
-    });
+      const hashedPassword = await bcrypt.hash(password, 10);
 
-    await newUser.save();
-    return res.status(201).json({ message: "User registered successfully!" });
+      console.log("1. PASSWORD HASHED:", hashedPassword.startsWith("$2"));
 
-  } catch (error) {
-    // 1. Catch MongoDB unique constraint error (e.g., Email already registered)
-    if (error.code === 11000) {
-      return res.status(400).json({ 
-        errors: { email: "Email address is already registered" } 
-      });
-    }
-
-    // 2. Catch Mongoose Validation Errors and break them down by field
-    if (error.name === "ValidationError") {
-      let fieldErrors = {};
-      
-      Object.keys(error.errors).forEach((key) => {
-        fieldErrors[key] = error.errors[key].message; // Grab your custom schema string
+      const newUser = new User({
+        fullName,
+        email,
+        phone: cleanedPhone,
+        password: hashedPassword
       });
 
-      return res.status(400).json({ errors: fieldErrors });
-    }
+      console.log("2. PASSWORD BEFORE SAVE:", newUser.password.startsWith("$2"));
 
-    return res.status(500).json({ message: "Something went wrong on the server" });
-  }
-};
+      await newUser.save();
+
+
+      console.log("3. USER SAVED SUCCESSFULLY");
+      return res.status(201).json({ message: "User registered successfully!" });
+
+    } catch (error) {
+      // 1. Catch MongoDB unique constraint error (e.g., Email already registered)
+      if (error.code === 11000) {
+        return res.status(400).json({ 
+          errors: { email: "Email address is already registered" } 
+        });
+      }
+
+      // 2. Catch Mongoose Validation Errors and break them down by field
+      if (error.name === "ValidationError") {
+        let fieldErrors = {};
+        
+        Object.keys(error.errors).forEach((key) => {
+          fieldErrors[key] = error.errors[key].message; // Grab your custom schema string
+        });
+
+        return res.status(400).json({ errors: fieldErrors });
+      }
+
+      return res.status(500).json({ message: "Something went wrong on the server" });
+    }
+  };
 
 
 export const loginUser = async (req, res) => {

@@ -8,6 +8,7 @@ function Login() {
     email: "",
     password: ""
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   // state whenever a user types into an input field.
   const handleChange = (e) => {
@@ -89,23 +90,30 @@ const handleSubmit = async (e) => {
             required
           />
 
-          <label>Password</label>
+          <div className="form-group">
+  <label>Password</label>
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+  <div className="login-password-box">
+    <input
+      type={showPassword ? "text" : "password"}
+      name="password"
+      placeholder="Enter your password"
+      value={formData.password}
+      onChange={handleChange}
+      required
+    />
 
-          <button
-            type="submit"
-            className="login-submit-button"
-          >
-            Login
-          </button>
+    <button
+      type="button"
+      className="login-password-toggle"
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      {showPassword ? "🙈" : "👁"}
+    </button>
+  </div>
+</div>
+
+          
 
         </form>
 

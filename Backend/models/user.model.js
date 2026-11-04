@@ -33,7 +33,6 @@ const userSchema = new mongoose.Schema(
     timestamps: true
   }
 );
-
 // Create a Mongoose User model using userSchema. way for our application to work with User documents
 const User = mongoose.model("User", userSchema);
 
