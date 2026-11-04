@@ -152,13 +152,15 @@ function Transactions() {
 
                 <div
                   className={
-                    transaction.type === "withdraw"
+                    transaction.type === "withdraw" ||
+                     transaction.type === "transfer"
                       ? "transaction-amount withdraw-amount"
                       : "transaction-amount"
                   }
                 >
 
-                  {transaction.type === "withdraw"
+                  {transaction.type === "withdraw" ||
+                  transaction.type === "transfer"
                     ? "-"
                     : "+"
                   }

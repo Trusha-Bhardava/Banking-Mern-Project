@@ -1,6 +1,23 @@
 import Account from "../models/account.model.js";
 import User from "../models/user.model.js";
 
+// Create an account only if the user does not have one
+export const ensureAccountExists = async (userId) => {
+  let account = await Account.findOne({ userId });
+
+  if (!account) {
+    account = new Account({
+      userId,
+      accountNumber:
+        "SB" + Math.floor(10000000 + Math.random() * 90000000),
+      balance: 0
+    });
+
+    await account.save();
+  }
+
+  return account;
+};
 // Create account
 export const createAccount = async (req, res) => {
   try {

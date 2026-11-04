@@ -90,30 +90,31 @@ const handleSubmit = async (e) => {
             required
           />
 
-          <div className="form-group">
-  <label>Password</label>
+        <div className="form-group">
+        <label>Password</label>
 
-  <div className="login-password-box">
-    <input
-      type={showPassword ? "text" : "password"}
-      name="password"
-      placeholder="Enter your password"
-      value={formData.password}
-      onChange={handleChange}
-      required
-    />
+        <div className="login-password-box">
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Enter your password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
 
-    <button
-      type="button"
-      className="login-password-toggle"
-      onClick={() => setShowPassword(!showPassword)}
-    >
-      {showPassword ? "🙈" : "👁"}
-    </button>
-  </div>
-</div>
-
-          
+          <button
+            type="button"
+            className="login-password-toggle"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+                {showPassword ? "🙈" : "👁"}
+              </button>
+            </div>
+          </div>
+             <button type="submit" className="login-submit-btn">
+              Login
+            </button>
 
         </form>
 

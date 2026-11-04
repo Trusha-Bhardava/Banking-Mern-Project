@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { ensureAccountExists } from "./account.controller.js";
 
 // async because we perform database and bcrypt operations that return Promises
   export const registerUser = async (req, res) => {
@@ -75,6 +76,8 @@ export const loginUser = async (req, res) => {
       });
     }
 
+    const account = await ensureAccountExists(user._id);
+
     const token = jwt.sign(
       {
         userId: user._id
@@ -93,7 +96,11 @@ export const loginUser = async (req, res) => {
         fullName: user.fullName,
         email: user.email,
         phone: user.phone
-      }
+      },
+      account: {
+    accountNumber: account.accountNumber,
+    balance: account.balance
+  }
     });
 
   } catch (error) {
