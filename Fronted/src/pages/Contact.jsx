@@ -2,17 +2,12 @@ import { useState } from "react";
 
 function Contact() {
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
+  const [formData, setFormData] = useState({name: "", email: "", message: ""});
 
+ // state variable to track if the network request is loading
   const [loading, setLoading] = useState(false);
 
-
   const handleChange = (e) => {
-
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -20,9 +15,7 @@ function Contact() {
 
   };
 
-
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
@@ -33,87 +26,52 @@ function Contact() {
         "http://localhost:8000/api/contact/send",
         {
           method: "POST",
-
           headers: {
             "Content-Type": "application/json"
           },
-
           body: JSON.stringify(formData)
         }
       );
 
-
       const data = await response.json();
-
-
-      console.log(
-        "CONTACT RESPONSE:",
-        data
-      );
-
+      console.log("CONTACT RESPONSE:",data);
 
       if (!response.ok) {
-
-        alert(
-          data.message ||
-          "Unable to send message"
-        );
-
+        alert(data.message || "Unable to send message");
         return;
       }
-
-
       alert("Message sent successfully!");
 
-
       // Clear form
-      setFormData({
-        name: "",
-        email: "",
-        message: ""
-      });
-
+      setFormData({name: "", email: "", message: ""});
 
     } catch (error) {
-
-      console.log(
-        "Contact error:",
-        error
-      );
+      console.log("Contact error:",error);
 
       alert(
         "Unable to connect to server"
       );
 
     } finally {
-
+       // This block ALWAYS triggers at the absolute end, unlocking the submit button actions back to normal
       setLoading(false);
-
     }
-
   };
-
 
   return (
 
     <div className="contact-page">
-
       <h1>Contact Us</h1>
-
       <p className="contact-intro">
         Have a question? We are here to help you.
       </p>
 
-
       <div className="contact-container">
 
-
         {/* Contact Information */}
-
         <div className="contact-info">
 
           <h2>Get in Touch</h2>
-
           <p>
             <strong>Address:</strong>
             {" "}Rajkot, Gujarat, India
@@ -142,9 +100,7 @@ function Contact() {
         <div className="contact-form">
 
           <h2>Send Us a Message</h2>
-
           <form onSubmit={handleSubmit}>
-
 
             <input
               type="text"
@@ -155,7 +111,6 @@ function Contact() {
               required
             />
 
-
             <input
               type="email"
               name="email"
@@ -164,7 +119,6 @@ function Contact() {
               onChange={handleChange}
               required
             />
-
 
             <textarea
               name="message"
@@ -175,11 +129,9 @@ function Contact() {
               required
             ></textarea>
 
-
             <button
               type="submit"
-              disabled={loading}
-            >
+              disabled={loading} >
 
               {loading
                 ? "Sending..."
@@ -188,17 +140,11 @@ function Contact() {
 
             </button>
 
-
           </form>
-
         </div>
-
       </div>
-
     </div>
-
   );
-
 }
 
 export default Contact;

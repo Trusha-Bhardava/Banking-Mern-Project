@@ -9,20 +9,20 @@ function About() {
         simple, secure and convenient banking services.
       </p>
 
-<div className="about-image">
-  <img
-    src="/images/about1.jpg"
-    alt="SecureBank digital banking"
-  />
-  <img
-    src="/images/about2.jpg"
-    alt="SecureBank digital banking"
-  />
-  <img
-    src="/images/about3.png"
-    alt="SecureBank digital banking"
-  />
-</div>
+    <div className="about-image">
+      <img
+        src="/images/about1.jpg"
+        alt="SecureBank digital banking"
+      />
+      <img
+        src="/images/about2.jpg"
+        alt="SecureBank digital banking"
+      />
+      <img
+        src="/images/about3.png"
+        alt="SecureBank digital banking"
+      />
+    </div>
       <div className="about-cards">
 
         <div className="about-card">

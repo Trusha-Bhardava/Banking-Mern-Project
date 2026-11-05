@@ -14,7 +14,7 @@ function Register() {
 
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value  //  update only specific field
     });
 
     // Clear the error for the field being edited
@@ -22,29 +22,28 @@ function Register() {
       ...errors,
       [name]: ""
     });
-
     setMessage("");
   };
 
-  // Validate all form fields
+  // Validate all form fields for user
   const validateForm = () => {
+
+    // empty object to store any validation failure.
     let newErrors = {};
 
-    // Full name validation
+    // Full name validation, trim() remove empty spaces
     if (!formData.fullName.trim()) {
       newErrors.fullName = "Please enter your full name";
     }
 
     // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (!emailPattern.test(formData.email.trim())) {
       newErrors.email = "Enter a valid email, e.g. dev@gmail.com";
     }
 
     // Phone validation
     const phonePattern = /^\d{10}$/;
-
     if (!phonePattern.test(formData.phone)) {
       newErrors.phone = "Phone number must contain exactly 10 digits";
     }
@@ -57,9 +56,10 @@ function Register() {
       newErrors.password =
         "Password needs 8 characters, uppercase, lowercase, number and special character (@, #, etc.)";
     }
-
+   
+    // Update our visible component error tracker states
     setErrors(newErrors);
-
+    // checks if the error object is empty or not 
     return Object.keys(newErrors).length === 0;
   };
 
@@ -79,24 +79,27 @@ function Register() {
         "http://localhost:8000/api/users/register",
         {
           method: "POST",
+          // Ensure backend parses this as JSON payload.
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            ...formData,
-            email: formData.email.trim()
+            ...formData,   // copies everything currently in the registration form state memory
+            email: formData.email.trim()  // automatically remove accidental spaces at the very beginning or end of text
           })
         }
       );
 
+      // Parse the JSON payload sent back from the backend server
       const data = await response.json();
 
       console.log("Backend response:", data);
 
       if (response.ok) {
         setMessage("Registration successful!");
+        // Clear all existing frontend error messages from the screen
         setErrors({});
-
+        // Reset all input fields back to empty strings 
         setFormData({
           fullName: "",
           email: "",
@@ -113,6 +116,7 @@ function Register() {
       }
 
     } catch (error) {
+         // Handles system crashes if server networks disconnect completely
       console.error("Registration error:", error);
       setMessage("Unable to connect to server");
     }
