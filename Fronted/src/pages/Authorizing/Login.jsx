@@ -2,24 +2,21 @@
 import { useState } from "react";
 
 function Login() {
- 
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: ""
-  });
+  //formData initialized as an object with empty strings, setFormData is function to update this object.
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
 
-  // state whenever a user types into an input field.
+  // A function triggered every single time a user presses a key inside an input field.
   const handleChange = (e) => {
     setFormData({
-      ...formData, // preserves the other unchanged form values.
-      [e.target.name]: e.target.value // preserves the other unchanged form values.
+      ...formData, // copies all existing key-value pairs inside the state
+      [e.target.name]: e.target.value // update the field what user type
     });
   };
 
-  // Handles form submission when the user clicks the Login button.Handles form submission when the user clicks the Login button.request to the backend API.
-  
+
+// Handles form submission when the user clicks the Login button and request to the backend API.
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -28,17 +25,20 @@ const handleSubmit = async (e) => {
       "http://localhost:8000/api/users/login",
       {
         method: "POST",
+        // Ensure backend parses this as JSON payload.
         headers: {
           "Content-Type": "application/json"
         },
+        // it converts the JavaScript formData object into a JSON string format so the backend can read it.
         body: JSON.stringify(formData)
       }
     );
 
+    // Parse the JSON payload sent back from the backend server
     const data = await response.json();
 
+    // if it successful then store json token in browser for long term memory
     if (response.ok) {
-
       // Save JWT token
       localStorage.setItem("token", data.token);
 
@@ -52,11 +52,9 @@ const handleSubmit = async (e) => {
       );
 
       console.log("LOGIN SUCCESSFUL:", data);
-
       alert("Login successful!");
 
-      // Redirect to home page
-      window.location.href = "/";
+     
 
     } else {
       alert(data.message || "Login failed");
@@ -87,7 +85,7 @@ const handleSubmit = async (e) => {
             placeholder="Enter your email"
             value={formData.email}
             onChange={handleChange}
-            required
+            required  // Stops the user from submitting an empty.
           />
 
         <div className="form-group">

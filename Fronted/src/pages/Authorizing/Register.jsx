@@ -2,18 +2,13 @@
 import { useState } from "react";
 
 function Register() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    password: ""
-  });
 
+  const [formData, setFormData] = useState({fullName: "", email: "", phone: "", password: ""});
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
-  // Update input values
+  //  A function triggered every single time a user presses a key inside an input field.
   const handleChange = (e) => {
     const { name, value } = e.target;
 
