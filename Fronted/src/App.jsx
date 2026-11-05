@@ -13,7 +13,7 @@ import Transfer from "./pages/Services_Nav/Transfer";
 import Account from "./pages/Services_Nav/Account";
 import Transactions from "./pages/Services_Nav/Transaction";
 import Security from "./pages/Services_Nav/Security";
-import ResumeAnalyzer from "./ResumeAnalyzer.jsx";
+
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
 
         <Route path="/contact" element={<Contact />} />
 
-        <Route path="/resume-analyzer" element={<ResumeAnalyzer />} />
+
 
         <Route path="/login" element={<Login />} />
 

@@ -41,21 +41,14 @@ function Account() {
  
          // If the request was approved by the server, update the 'account' state.
         if (response.ok) {
-
           setAccount(data.account);
-
         } else {
-
           alert(data.message || "Unable to get account details");
-
         }
 
       } catch (error) {
-
         console.log("Account error:", error);
-
         alert("Unable to connect to server");
-
       } 
        // This block runs no matter what (success or failure) to turn off the loading layout.
       finally 
@@ -63,9 +56,7 @@ function Account() {
         setLoading(false);
       }
     };
-
     fetchAccountDetails();
-
   }, []);
 
 
@@ -86,7 +77,6 @@ function Account() {
     );
   }
 
-
   return (
 
     <div className="account-page">
@@ -96,22 +86,16 @@ function Account() {
         <div className="account-header">
 
           <p>SECUREBANK</p>
-
           <h1>Account Overview</h1>
-
-          <span>
-            View your banking account information.
-          </span>
+          <span>View your banking account information. </span>
 
         </div>
 
 
         <div className="account-card">
-
           <div className="account-card-header">
 
             <h2>Account Details</h2>
-
             <span>✓ Active</span>
 
           </div>
@@ -119,25 +103,17 @@ function Account() {
 
           <div className="account-details">
 
-
             <div className="account-detail">
 
               <p>Account Number</p>
-
-              <strong>
-                {account.accountNumber}
-              </strong>
+              <strong> {account.accountNumber} </strong>
 
             </div>
-
 
             <div className="account-detail">
 
               <p>Current Balance</p>
-
-              <strong>
-                ₹{Number(account.balance).toLocaleString("en-IN")}
-              </strong>
+              <strong> ₹{Number(account.balance).toLocaleString("en-IN")} </strong>
 
             </div>
 
@@ -145,10 +121,7 @@ function Account() {
             <div className="account-detail">
 
               <p>Account Created</p>
-
-              <strong>
-                {new Date(account.createdAt).toLocaleDateString("en-IN")}
-              </strong>
+              <strong> {new Date(account.createdAt).toLocaleDateString("en-IN")}  </strong>
 
             </div>
 
@@ -156,26 +129,17 @@ function Account() {
             <div className="account-detail">
 
               <p>Total Transactions</p>
-
-              <strong>
-                {account.transactionCount}
-              </strong>
-
+              <strong> {account.transactionCount} </strong>
             </div>
-
           </div>
-
         </div>
-
 
         <div className="account-status">
 
           <span>🔒</span>
-
           <div>
 
             <h3>Your account is secure</h3>
-
             <p>
               Your SecureBank account is active and
               protected by secure banking practices.

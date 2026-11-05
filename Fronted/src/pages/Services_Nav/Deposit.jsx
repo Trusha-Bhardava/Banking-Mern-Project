@@ -80,7 +80,6 @@ function Deposit() {
       <div className="deposit-card">
 
         <h1>Deposit Money</h1>
-
         <p className="deposit-description">Add money to your SecureBank account.</p>
 
         <form className="deposit-form" onSubmit={handleDeposit}>
@@ -94,14 +93,12 @@ function Deposit() {
             onChange={(e) => setAmount(e.target.value)}
           />
 
-          
           <button type="submit" disabled={loading}>
             {loading ? "Processing..." : "Deposit Money"}
           </button>
 
         </form>
-
-       
+      
         {message && (
           <p className="deposit-message">{message}</p>
         )}

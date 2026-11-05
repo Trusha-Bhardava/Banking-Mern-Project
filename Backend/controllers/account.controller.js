@@ -61,7 +61,6 @@ export const createAccount = async (req, res) => {
   }
 };
 
-
 // Get account
 export const getAccount = async (req, res) => {
   try {
@@ -100,7 +99,6 @@ export const getAccount = async (req, res) => {
     });
   }
 };
-
 
 // Deposit money
 export const depositMoney = async (req, res) => {
@@ -147,7 +145,6 @@ export const depositMoney = async (req, res) => {
     });
   }
 };
-
 
 // Withdraw money
 export const withdrawMoney = async (req, res) => {
@@ -201,7 +198,6 @@ export const withdrawMoney = async (req, res) => {
     });
   }
 };
-
 
 // Get transactions
 export const getTransactions = async (req, res) => {
